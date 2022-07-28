@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+  }
+  includeHTML();
+</script>
+
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Periaps | Bringing advanced manufacturing down to Earth</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionic Icon Css -->
+  <link rel="stylesheet" href="plugins/Ionicons/css/ionicons.min.css">
+  <!-- animate.css -->
+  <link rel="stylesheet" href="plugins/animate-css/animate.css">
+  <!-- Magnify Popup -->
+  <link rel="stylesheet" href="plugins/magnific-popup/magnific-popup.css">
+  <!-- Slick CSS -->
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body id="body">
+  <!-- Header Start -->
+  <div w3-include-html="navbar.html"></div><!-- header close -->
+  <section class="page-title bg-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block">
+            <h1>Tell us how we can help</h1>
+            <p>Send a message using the form, or reach out via email or phone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- contact form start -->
+  <section class="contact-form">
+    <div class="container">
+      <!--
+      <form class="row" id="contact-form">
+        <div class="col-md-6 col-sm-12">
+          <div class="block">
+            <div class="form-group">
+              <input name="user_name" type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <input name="user_email" type="text" class="form-control" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+              <input name="user_subject" type="text" class="form-control" placeholder="Subject">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="block">
+            <div class="form-group-2">
+              <textarea name="user_message" class="form-control" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button class="btn btn-default" type="submit">Send Message</button>
+          </div>
+        </div>
+        <div class="error" id="error">Sorry, message could not be sent</div>
+        <div class="success" id="success">Message sent</div>
+      </form>
+      -->
+      <div class="contact-box row">
+        <div class="col-md-6 col-sm-12">
+          <div class="block">
+            <h2>Reach out to us:</h2>
+            <ul class="address-block">
+              <li>
+                <i class="ion-ios-location-outline"></i>Columbus, Ohio
+              </li>
+              <li>
+                <i class="ion-ios-email-outline"></i>Email: <a href="mailto:hi@periaps.com">hi@periaps.com</a>
+              </li>
+              <li>
+                <i class="ion-ios-telephone-outline"></i>Phone: <a href="tel:6144217612">(614) 421-7612</a>
+              </li>
+            </ul>
+            <!--
+            <ul class="social-icons">
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-googleplus-outline"></i></a>
+              </li>
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-linkedin-outline"></i></a>
+              </li>
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-pinterest-outline"></i></a>
+              </li>
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-dribbble-outline"></i></a>
+              </li>
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-twitter-outline"></i></a>
+              </li>
+              <li>
+                <a href="http://www.themefisher.com"><i class="ion-social-facebook-outline"></i></a>
+              </li>
+            </ul>
+          -->
+          </div>
+        </div>
+        <div class="col-md-6 mt-5 mt-md-0">
+          <div class="block">
+            <div class="google-map">
+              <div class="google-map" ><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195656.5200725196!2d-83.13091183496877!3d39.9831302161779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883889c1b990de71%3A0xe43266f8cfb1b533!2sColumbus%2C%20OH!5e0!3m2!1sen!2sus!4v1658965468314!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer Start -->
+  <!-- footer Start -->
+  <div w3-include-html="footer.html"></div>
+
+  <!--Scroll to top-->
+  <div id="scroll-to-top" class="scroll-to-top">
+    <span class="icon ion-ios-arrow-up"></span>
+  </div>
+  <!-- 
+    Essential Scripts
+    =====================================-->
+
+  <!-- Include navbar and footer -->
+  <script>includeHTML();</script>
+
+  <!-- Main jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 3.1 -->
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <!-- slick Carousel -->
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <!-- filter -->
+  <script src="plugins/shuffle/shuffle.min.js"></script>
+  <script src="plugins/SyoTimer/jquery.syotimer.min.js"></script>
+  <!-- Google Map -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+  <script src="plugins/google-map/map.js"></script>
+
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
